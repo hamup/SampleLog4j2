@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="./test.log"
+                     filePattern="./test-%d{yyyy-MM-dd}-%i.zip">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"/>
+            <Policies>
+                <!--<OnStartupTriggeringPolicy /> 新たなJVMが起動した場合 -->
+                <SizeBasedTriggeringPolicy size="20 MB" />
+                <!--<TimeBasedTriggeringPolicy /> ログの開始日と日付が異なる場合 -->
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
